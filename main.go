@@ -26,6 +26,7 @@ var (
 	currentResponse = new(PostalCodeLookupResponse)
 )
 
+// PostalCodeLookupResponse returns the next delivery dates for the given postal code.
 type PostalCodeLookupResponse struct {
 	StreetAddressRequest bool     `json:"isStreetAddressReq"`
 	DeliveryDays         []string `json:"nextDeliveryDays"`
