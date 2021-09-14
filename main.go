@@ -17,10 +17,10 @@ const (
 )
 
 var (
-	//go:embed index.gohtml
+	//go:embed web/index.gohtml
 	res   embed.FS
 	pages = map[string]string{
-		"/": "index.gohtml",
+		"/": "web/index.gohtml",
 	}
 	client          = http.DefaultClient
 	currentResponse = new(PostalCodeLookupResponse)
