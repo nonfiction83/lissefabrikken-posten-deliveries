@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Postbudet kommer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        ul.schedule > li:nth-child(1) {
+            font-weight: bold;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            background-color: #e5e5e5;
+        }
+        h1 {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 1em;
+        }
+        small {
+            font-size: 6px;
+        }
+        li {
+            list-style-position: inside;
+            text-indent: -3em;
+        }
+        .footer {
+            position: fixed;
+            right: 0.5em;
+            bottom: 0.5em;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Når kommer posten?</h1>
+    {{ if .missingData }}
+        <strong>(informasjon vil bli oppdatert snart)</strong>
+    {{else}}
+        <ul class="schedule">
+            {{range $val := .deliveryDays}}
+                <li>{{$val}}</li>
+            {{end}}
+        </ul>
+        <div class="footer">
+            <small>Sist oppdatert {{ .lastUpdated.Format "02/01/06 15:04" }}</small>
+        </div>
+    {{end}}
+</div>
+</body>
+</html>
