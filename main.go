@@ -7,13 +7,13 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
 const (
 	schedule   = 15 * time.Minute
 	postalCode = "0553"
-	port       = "5055"
 )
 
 var (
@@ -66,6 +66,10 @@ func main() {
 		}
 	})
 	http.FileServer(http.FS(res))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "5055"
+	}
 	log.Printf("server started on port %s...", port)
 	err := http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
 	if err != nil {
