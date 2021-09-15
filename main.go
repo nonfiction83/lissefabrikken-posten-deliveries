@@ -118,6 +118,12 @@ func fetchData() (*PostalCodeLookupResponse, error) {
 	}
 
 	log.Println("successfully fetched new data from Posten")
-	p.LastUpdated = time.Now()
+
+	location, err := time.LoadLocation("Europe/Berlin")
+	if err != nil {
+		log.Printf("could not load location: %+v", err)
+		return nil, err
+	}
+	p.LastUpdated = time.Now().In(location)
 	return &p, nil
 }
