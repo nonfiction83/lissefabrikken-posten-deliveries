@@ -40,7 +40,6 @@ func main() {
 	kickstart <- true
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		time.Now()
 		page, ok := pages[r.URL.Path]
 		if !ok {
 			w.WriteHeader(http.StatusNotFound)
