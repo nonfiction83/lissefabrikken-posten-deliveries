@@ -99,7 +99,7 @@ func fetchData() (*PostalCodeLookupResponse, error) {
 	log.Println("fetching newest data from Posten")
 	var p PostalCodeLookupResponse
 
-	req, err := http.NewRequest("GET", fmt.Sprintf("https://www.posten.no/levering-av-post-2020/_/component/main/1/leftRegion/1?postCode=%s", postalCode), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("https://www.posten.no/levering-av-post/_/component/main/1/leftRegion/1?postCode=%s", postalCode), nil)
 	if err != nil {
 		log.Fatal("could not construct request, something is seriously wrong")
 	}
